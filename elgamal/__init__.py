@@ -42,8 +42,7 @@ class Elgamal:
         self.gamma = pow(self.alpha, self.k, self.p)
         # Calculate k^-1 mod (p-1)
         k_inv = pow(self.k, -1, self.p - 1)
-        tmp = (self.hs_int - self.gamma * self.private) * k_inv
-        self.delta = tmp % (self.p - 1)
+        self.delta = ((self.hs_int - self.gamma * self.private) * k_inv) % (self.p - 1)
         print('Signing finished....')
 
     def verify(self):
